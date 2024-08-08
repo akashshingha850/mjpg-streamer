@@ -1,8 +1,8 @@
 # Install
 
 ## Jetson
-wget -qO- https://github.com/akashshingha850/mjpg-streamer/master/install.sh | bash 
+wget -qO- https://github.com/akashshingha850/mjpg-streamer/main/install.sh | bash 
 
 # Uninstall
 
-wget -qO- https://github.com/akashshingha850/mjpg-streamer/master/uninstall.sh | bash
+wget -qO- https://github.com/akashshingha850/mjpg-streamer/main/uninstall.sh | bash
