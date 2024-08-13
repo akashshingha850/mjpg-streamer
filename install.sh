@@ -24,6 +24,8 @@ sudo make install
 
 echo "mjpg-streamer installation completed successfully."
 
+chmod +x start.sh
+
 # Run start.sh
 #./start.sh
 #echo "mjpg-streamer started successfully."
