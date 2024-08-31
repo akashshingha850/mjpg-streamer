@@ -3,10 +3,6 @@
 # Exit immediately if a command exits with a non-zero status
 set -e
 
-# Optionally, remove the source directory if it still exists
-sudo rm -rf ~/mjpg-streamer
-echo "Directory removed"
-
 # Stop the service
 sudo systemctl stop mjpg-streamer.service
 
@@ -24,6 +20,8 @@ sudo systemctl daemon-reload
 #sudo rm /usr/local/bin/input_uvc.so
 #sudo rm /usr/local/bin/output_http.so
 
-
+# Optionally, remove the source directory if it still exists
+sudo rm -rf ~/mjpg-streamer
+echo "Directory removed"
 
 echo "mjpg-streamer service uninstalled successfully."
