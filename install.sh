@@ -29,13 +29,15 @@ chmod +x start.sh
 # Run start.sh
 #./start.sh
 #echo "mjpg-streamer started successfully."
+# Ask the user if they want to enable the service at startup
+read -p "Do you want to enable mjpg-streamer service at startup? (y/n): " enable_service
 
-# Create systemd service file
-sudo bash -c 'cat > /etc/systemd/system/mjpg-streamer.service <<EOF
+if [ "$enable_service" = "y" ]; then
+  # Create systemd service file
+  sudo bash -c 'cat > /etc/systemd/system/mjpg-streamer.service <<EOF
 [Unit]
 Description=mjpg-streamer service
 After=network.target
-
 
 [Service]
 ExecStart=/home/jetson/mjpg-streamer/start.sh
@@ -43,17 +45,19 @@ WorkingDirectory=/home/jetson/mjpg-streamer/
 Restart=always
 User=jetson
 
-
 [Install]
 WantedBy=multi-user.target
 EOF'
 
-# Reload systemd, enable and start the service
-sudo systemctl daemon-reload
-sudo systemctl enable mjpg-streamer.service
-sudo systemctl start mjpg-streamer.service
+  # Reload systemd, enable and start the service
+  sudo systemctl daemon-reload
+  sudo systemctl enable mjpg-streamer.service
+  sudo systemctl start mjpg-streamer.service
 
-# Check the status of the service
-sudo systemctl status mjpg-streamer.service
+  # Check the status of the service
+  sudo systemctl status mjpg-streamer.service
 
-echo "mjpg-streamer service installed and started successfully."
+  echo "mjpg-streamer service installed and started successfully."
+else
+  echo "Skipping mjpg-streamer service installation. You can start the service manually by running ./start.sh."
+fi
